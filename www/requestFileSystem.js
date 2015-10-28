@@ -42,7 +42,7 @@ var fileSystems = require('./fileSystems');
  * @param successCallback  invoked with a FileSystem object
  * @param errorCallback  invoked if error occurs retrieving file system
  */
-var requestFileSystem = function(type, size, successCallback, errorCallback) {
+var requestFileSystem = module.exports.requestFileSystem || function(type, size, successCallback, errorCallback) {
     argscheck.checkArgs('nnFF', 'requestFileSystem', arguments);
     var fail = function(code) {
         errorCallback && errorCallback(new FileError(code));
